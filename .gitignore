@@ -1,0 +1,9 @@
+/test.py
+*.pyc
+
+/challenge.py
+/RiotChallengeWeb/features_champ_8.tsv.bak
+
+/RiotChallengeWeb/requirements.txt
+/features - Copy.py
+/~$Readme.docx
