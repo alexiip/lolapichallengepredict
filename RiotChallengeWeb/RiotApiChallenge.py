@@ -25,8 +25,7 @@ summ_league_url = 'https://na.api.pvp.net/api/lol/{0}/v2.5/league/by-summoner/{1
 #Insert your AzureML key here
 azure_key = ''
 #Insert your AzureML API url here
-azure_ml_api_url = 'https://ussouthcentral.services.azureml.net/workspaces/9cc892d0247042b5b47daaf7e8fe0817/services/3f8b5f9f1bf44e9eb0711ff5be169502/execute?api-version=2.0&details=true'
-
+azure_ml_api_url = 'https://ussouthcentral.services.azureml.net/workspaces/9cc892d0247042b5b47daaf7e8fe0817/services/aabcacd5c5cc47b5beb681110fead665/execute?api-version=2.0&details=true'
 
 #Call AzureML to make prediction
 def make_prediction(curr_game, summ_id):
@@ -44,8 +43,7 @@ def make_prediction(curr_game, summ_id):
                },        },
             "GlobalParameters": {}
             }
-    #TODO: while using old model, renaming Tier to Tear (misspelling), remember to fix
-    payload = str.encode(json.dumps(payload)).replace('Tier', 'Tear')
+    payload = str.encode(json.dumps(payload))#.replace('Tier', 'Tear')
     headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ azure_key)}
     r = None
     try:
@@ -55,16 +53,17 @@ def make_prediction(curr_game, summ_id):
         return -1
     
     if r.status_code == 200:
-        winner = r.json()['Results']['RAPC_out']['value'].get('Values', -1)[0][3613]
-        confidence = r.json()['Results']['RAPC_out']['value'].get('Values', -1)[0][3614]
+        winner = r.json()['Results']['RAPC_out']['value'].get('Values', -1)[0][3614]
+        confidence = r.json()['Results']['RAPC_out']['value'].get('Values', -1)[0][3615]
         summ_team = get_summ_team(curr_game, summ_id)
-               
+                
         if int(summ_team) == int(winner):
             won = True
         else:
             won = False
         return won, confidence
     else:
+        logging.error(r.text)
         return -1
 
 def get_summ_team(curr_game, summ_id):
