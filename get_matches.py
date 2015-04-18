@@ -46,10 +46,10 @@ def get_all_games(start_epoch_time):
     start_time_long = datetime.now()
     
     #write header
-    #with open(matches_data_file, 'w') as f:
-    #    f.write('\t'.join(['EpochSeconds','MatchId', 'MatchDataJSON', '\n']))
+    with open(matches_data_file, 'w') as f:
+        f.write('\t'.join(['EpochSeconds','MatchId', 'MatchDataJSON', '\n']))
 
-    #begin loop to read files
+    #loop to get matches
     with open(games_data_file, 'r') as f:
         next(f)
         for line in f:

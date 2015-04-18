@@ -46,10 +46,10 @@ def get_all_games(start_epoch_time):
     epoch_time = start_epoch_time
     
     #write header
-    #with open(games_data_file, 'w') as f:
-    #    f.write('\t'.join(['EpochSeconds','Games', '\n']))
+    with open(games_data_file, 'w') as f:
+        f.write('\t'.join(['EpochSeconds','Games', '\n']))
         
-    #begin loop to read files
+    #loop to get games via challenge api
     while True:
         current_epoch_time = get_current_epoch_time()
         #print(current_epoch_time)
