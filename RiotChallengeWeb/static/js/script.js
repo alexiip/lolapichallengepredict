@@ -81,7 +81,7 @@ function showNotFound() {
     var alert = "<br/><br/><div class=\"alert alert-danger alert-dismissible fade in\" role=\"alert\"> \
             <button type=\"button\" class=\"close\" data-dismiss=\"alert\"><span aria-hidden=\"true\">x</span> \
             <span class=\"sr-only\">Close</span></button> \
-            <strong>Summoner not found in NA...</strong></div>";
+            <strong>Summoner not found in NA live game...</strong></div>";
     $("#error").html(alert);
 }
 
