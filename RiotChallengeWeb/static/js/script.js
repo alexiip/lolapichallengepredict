@@ -31,7 +31,7 @@ function getResults(btn) {
             if (win == true)
                 $("#result").html("<h2 class=\"text-success\"><strong>You should WIN this game!</strong></h2>");
             else
-                $("#result").html("<h2 class=\"text-danger\"> <strong>You should LOOSE this game.</strong></h2>");
+                $("#result").html("<h2 class=\"text-danger\"> <strong>You should LOSE this game.</strong></h2>");
         }else{
             console.log("error submitting " + name);
         }
